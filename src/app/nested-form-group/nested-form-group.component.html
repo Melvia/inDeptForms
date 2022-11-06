@@ -1,0 +1,27 @@
+<form [formGroup]="profileFormGroup">
+  <h2>Basic Information</h2>
+  <!-- basic information fields -->
+  <!-- notice the usage of formGroupName below -->
+  <div formGroupName="address">
+    <h2>Address</h2>
+    <div>
+      <label for="line1">Line 1*</label>
+      <input
+        [id]="'line1'"
+        [name]="'line1'"
+        autocomplete="address-line1"
+        formControlName="line1"
+        required
+        type="text"
+        [ngClass]="{
+          'is-invalid': line1FC?.invalid && (line1FC?.touched || line1FC?.dirty)
+        }"
+      />
+      <div class="invalid-feedback">Address line 1 is required</div>
+    </div>
+    <!-- other address related fields -->
+  </div>
+  <button type="submit" [disabled]="profileFormGroup.invalid">
+    Submit form
+  </button>
+</form>
